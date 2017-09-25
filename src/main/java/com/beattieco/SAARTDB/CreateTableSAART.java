@@ -45,21 +45,21 @@ public class CreateTableSAART {
         	Table table = dynamoDB.createTable(tableName,
         			//Key fields
         			Arrays.asList(
-        					new KeySchemaElement("SVID", KeyType.HASH), 
+        					new KeySchemaElement("svid", KeyType.HASH), 
         					new KeySchemaElement("company", KeyType.RANGE)
         					),
         			//Attribute fields
         			Arrays.asList(
-        					new AttributeDefinition("SVID", ScalarAttributeType.S),
+        					new AttributeDefinition("svid", ScalarAttributeType.S),
         					new AttributeDefinition("company", ScalarAttributeType.S)),
-       /* 					new AttributeDefinition("DUNS", ScalarAttributeType.S),
+       /* 					new AttributeDefinition("duns", ScalarAttributeType.S),
         					new AttributeDefinition("state", ScalarAttributeType.S),
-        					new AttributeDefinition("SCVP", ScalarAttributeType.S),
-        					new AttributeDefinition("SM", ScalarAttributeType.S),
-        					new AttributeDefinition("CSE", ScalarAttributeType.S),
-        					new AttributeDefinition("AM", ScalarAttributeType.S),
-        					new AttributeDefinition("ASC", ScalarAttributeType.S),
-        					new AttributeDefinition("TSC", ScalarAttributeType.S),
+        					new AttributeDefinition("scvp", ScalarAttributeType.S),
+        					new AttributeDefinition("sm", ScalarAttributeType.S),
+        					new AttributeDefinition("cse", ScalarAttributeType.S),
+        					new AttributeDefinition("am", ScalarAttributeType.S),
+        					new AttributeDefinition("asc", ScalarAttributeType.S),
+        					new AttributeDefinition("tsc", ScalarAttributeType.S),
         					new AttributeDefinition("industry", ScalarAttributeType.S),
         					new AttributeDefinition("employees", ScalarAttributeType.N)
         					),

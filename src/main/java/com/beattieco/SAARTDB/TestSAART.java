@@ -11,7 +11,7 @@ public class TestSAART {
     	
     	//Test scan functionality
     	System.out.println("\n\n********** TESTING SCAN *********");
-    	ItemCollection<ScanOutcome> scanResult = beattieTable.scanByCompany("ELECTRO");
+    	ItemCollection<ScanOutcome> scanResult = beattieTable.scanByCompany("electro");
     	
     	int scanCount = beattieTable.scanCount(scanResult);
     	if (scanCount > 0) {
@@ -23,12 +23,12 @@ public class TestSAART {
     	}
     	
     	System.out.println("\n\n********** TESTING OUTPUT *********");
-    	String output = beattieTable.outputScan(beattieTable.scanByCompany("ELECTRO"), "company", "CSE");
+    	String output = beattieTable.outputScan(beattieTable.scanByCompany("electro"), "company", "cse");
     	System.out.println(output);
     	
     	//Test query functionality
     	System.out.println("\n\n********** TESTING QUERY *********");
-    	ItemCollection<QueryOutcome> queryResult = beattieTable.queryBySVID("000Z0O");
+    	ItemCollection<QueryOutcome> queryResult = beattieTable.queryBySVID("000z0o");
     	
     	int queryCount = beattieTable.queryCount(queryResult);
     	if (queryCount > 0) {

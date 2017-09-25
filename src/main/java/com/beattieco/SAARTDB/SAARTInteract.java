@@ -66,18 +66,18 @@ public class SAARTInteract {
 	 *  @param String SVID:  the SVID of the company to search for
 	 *  @return ItemCollection<QueryOutcome>
 	*/
-	ItemCollection<QueryOutcome> queryBySVID(String SVID) {
+	ItemCollection<QueryOutcome> queryBySVID(String svid) {
         ItemCollection<QueryOutcome> items = null;
 
         try {
         	//build query criteria using SVID.  Requires setting hash.
             HashMap<String, String> nameMap = new HashMap<String, String>();
-            nameMap.put("#SVID", "SVID");
+            nameMap.put("#svid", "svid");
 
             HashMap<String, Object> valueMap = new HashMap<String, Object>();
-            valueMap.put(":ssssss", SVID);
+            valueMap.put(":ssssss", svid);
 
-            QuerySpec querySpec = new QuerySpec().withKeyConditionExpression("#SVID = :ssssss").withNameMap(nameMap)
+            QuerySpec querySpec = new QuerySpec().withKeyConditionExpression("#svid = :ssssss").withNameMap(nameMap)
                 .withValueMap(valueMap);
 
         	items = table.query(querySpec);

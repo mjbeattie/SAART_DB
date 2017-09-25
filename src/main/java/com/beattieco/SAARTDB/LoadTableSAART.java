@@ -46,32 +46,45 @@ public class LoadTableSAART {
         while (iter.hasNext()) {
             currentNode = (ObjectNode) iter.next();
 
-            String SVID = currentNode.path("SVID").asText();
+            //Read in JSON file into object while converting all strings to
+            //lower case.  DynamoDB cannot do case insensitive search.
+            String svid = currentNode.path("SVID").asText();
+            svid = svid.toLowerCase();
             String company = currentNode.path("COMPANY").asText();
-            String DUNS = currentNode.path("DUNS").asText();
+            company = company.toLowerCase();
+            String duns = currentNode.path("DUNS").asText();
+            duns = duns.toLowerCase();
             String state = currentNode.path("STATE").asText();
-            String SCVP = currentNode.path("SCVP").asText();
-            String SM = currentNode.path("SM").asText();
-            String CSE = currentNode.path("CSE").asText();
-            String AM = currentNode.path("AM").asText();
-            String ASC = currentNode.path("ASC").asText();
-            String TSC = currentNode.path("TSC").asText();
+            state = state.toLowerCase();
+            String scvp = currentNode.path("SCVP").asText();
+            scvp = scvp.toLowerCase();
+            String sm = currentNode.path("SM").asText();
+            sm = sm.toLowerCase();
+            String cse = currentNode.path("CSE").asText();
+            cse = cse.toLowerCase();
+            String am = currentNode.path("AM").asText();
+            am = am.toLowerCase();
+            String asc = currentNode.path("ASC").asText();
+            asc = asc.toLowerCase();
+            String tsc = currentNode.path("TSC").asText();
+            tsc = tsc.toLowerCase();
             String industry = currentNode.path("INDUSTRY").asText();
+            industry = industry.toLowerCase();
             int employees = currentNode.path("EMPLOYEES").asInt();
             
-            System.out.println(SVID + " " + company);
+            System.out.println(svid + " " + company);
 
             try {
             	Item item = new Item()
-            			.withPrimaryKey("SVID", SVID, "company", company) 
-            			.withString("DUNS", DUNS) 
+            			.withPrimaryKey("svid", svid, "company", company) 
+            			.withString("duns", duns) 
             			.withString("state", state) 
-            			.withString("SCVP", SCVP)  
-            			.withString("SM", SM) 
-            			.withString("CSE", CSE) 
-            			.withString("AM", AM) 
-            			.withString("ASC", ASC) 
-            			.withString("TSC", TSC) 
+            			.withString("scvp", scvp)  
+            			.withString("sm", sm) 
+            			.withString("cse", cse) 
+            			.withString("am", am) 
+            			.withString("asc", asc) 
+            			.withString("tsc", tsc) 
             			.withString("industry", industry) 
             			.withNumber("employees", employees);
 
@@ -81,7 +94,7 @@ public class LoadTableSAART {
 
             }
             catch (Exception e) {
-                System.err.println("Unable to add movie: " + SVID + " " + company);
+                System.err.println("Unable to add SAART record: " + svid + " " + company);
                 System.err.println(e.getMessage());
                 break;
             }
